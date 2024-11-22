@@ -43,6 +43,8 @@ public class ContainerWithMostWater {
         ArrayList<Integer> A = new ArrayList<>(Arrays.asList(1));
         int res = find(A);
         System.out.println(res);
+        // Time O(N);
+        // Space O(1);
     }
 
     public static int find(ArrayList<Integer> A) {
