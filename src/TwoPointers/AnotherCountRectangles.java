@@ -50,9 +50,13 @@ public class AnotherCountRectangles {
         int B = 12;
         int res = bruteForce(A, A.size(), B);
         System.out.println(res);
+        // Time O(N^2);
+        // Space O(1);
 
         int ans = optimized(A, A.size(), B);
         System.out.println(ans);
+        // Time O(N);
+        // Space O(1);
     }
 
     public static int optimized(ArrayList<Integer> A, int n, int B) {
