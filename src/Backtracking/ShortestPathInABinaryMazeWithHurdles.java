@@ -67,9 +67,9 @@ For Input 3 :
 No path exists, so we return -1
  */
 public class ShortestPathInABinaryMazeWithHurdles {
-
     private static int[] row = {-1, 1, 0, 0};
     private static int[] col = {0, 0, 1, -1};
+    // row and col are direction array
     private static int ans = Integer.MAX_VALUE;
     private static boolean isPossible = false;
 
