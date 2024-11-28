@@ -1,7 +1,5 @@
 package Backtracking;
 
-import java.util.ArrayList;
-
 /*
 Problem Description
 On the first row, we write a 0. Now in every subsequent row,
@@ -47,7 +45,7 @@ Explanation 2:
  Row 4: 01101001
 
  */
-public class kthSymbolHard {
+public class KthSymbolHard {
 
     public static void main(String[] args) {
         int A = 4;
