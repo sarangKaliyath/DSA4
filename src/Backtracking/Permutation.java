@@ -44,7 +44,7 @@ public class Permutation {
     // instances and method calls, potentially leading to leftover data from previous runs.
     private static ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
     public static void main(String[] args) {
-        ArrayList<Integer> A = new ArrayList<>(Arrays.asList(1));
+        ArrayList<Integer> A = new ArrayList<>(Arrays.asList(1, 2, 3));
         generatePermutations(A, 0, new boolean[A.size()], new ArrayList<>());
         System.out.println(ans);
         // Time O(A * A!);
