@@ -9,12 +9,11 @@ public class ListNode {
         this.next = null;
     }
 
-    public void printList(ListNode head){
-        if(head == null) System.out.println("null");
-        ListNode copy = head;
-        while(copy != null){
-            System.out.print(copy.val + " -> ");
-            copy = copy.next;
+    public void printList(){
+        ListNode head = this;
+        while(head != null){
+            System.out.print(head.val + " -> ");
+            head = head.next;
         }
         System.out.print("null");
     }

@@ -65,7 +65,7 @@ public class RemoveLoopFromLinkedList {
         copy.next = flag;
 
         ListNode res = fixList(A);
-        res.printList(res);
+        res.printList();
         // Time O(N);
     }
     public static ListNode fixList(ListNode head){
