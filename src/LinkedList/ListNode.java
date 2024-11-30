@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.List;
+
 public class ListNode {
      ListNode next = null;
     int val;
@@ -16,5 +18,15 @@ public class ListNode {
             head = head.next;
         }
         System.out.print("null");
+    }
+
+    public ListNode createListNode(int [] arr){
+        ListNode head = this;
+        ListNode copy = head;
+        for(int i = 1; i < arr.length; i++){
+            copy.next = new ListNode(arr[i]);
+            copy = copy.next;
+        }
+        return head;
     }
 }
