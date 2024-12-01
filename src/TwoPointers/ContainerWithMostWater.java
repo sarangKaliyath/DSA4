@@ -41,25 +41,18 @@ No container is formed.
 public class ContainerWithMostWater {
     public static void main(String[] args) {
         ArrayList<Integer> A = new ArrayList<>(Arrays.asList(1));
-        int res = find(A);
+        int res = find(A, A.size(), 0);
         System.out.println(res);
         // Time O(N);
         // Space O(1);
     }
 
-    public static int find(ArrayList<Integer> A) {
-        int res = 0;
+    public static int find(ArrayList<Integer> A, int n, int res) {
         int i = 0;
-        int j = A.size() - 1;
+        int j = n - 1;
         while (i < j) {
-            int width = j - i;
-            int minHeight = Math.min(A.get(i), A.get(j));
-            int area = width * minHeight;
-            res = Math.max(res, area);
-            if (minHeight == A.get(i) && minHeight == A.get(j)) {
-                i++;
-                j--;
-            } else if (minHeight == A.get(i)) i++;
+            res = Math.max((Math.min(A.get(i), A.get(j)) * (j - i)), res);
+            if (A.get(i) <= A.get(j)) i++;
             else j--;
         }
         return res;
