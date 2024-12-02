@@ -18,6 +18,7 @@ public class ListNode {
             head = head.next;
         }
         System.out.print("null");
+        System.out.println();
     }
 
     public ListNode createListNode(int [] arr){
