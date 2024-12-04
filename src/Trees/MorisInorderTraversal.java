@@ -45,7 +45,7 @@ Explanation 2:
 public class MorisInorderTraversal {
 
     public static void main(String[] args) {
-        ArrayList<Integer> A = new ArrayList<>(Arrays.asList(1, 6, 2, null, null, 3, null));
+        ArrayList<Integer> A = new ArrayList<>(Arrays.asList(10, 13, 11, 6, 4, null, 12, 2, null, 3, null, 16, null, 1, 0, null, null, 14, null, null, null, null, null, 15));
         BuildIntegerTree treeBuilder = new BuildIntegerTree();
         TreeNode root = treeBuilder.BuildIntegerTree(A);
 
