@@ -56,8 +56,8 @@ public class LCAInBST {
 
     public static void main(String[] args) {
         ArrayList<Integer> A = new ArrayList<>(Arrays.asList(15, 12, 20, 10, 14, 16, 27, 8));
-        int B = 8;
-        int C = 20;
+        int B = 10;
+        int C = 14;
         BuildIntegerTree treeBuilder = new BuildIntegerTree();
         TreeNode root = treeBuilder.BuildIntegerTree(A);
         int res = find(root, B, C);
