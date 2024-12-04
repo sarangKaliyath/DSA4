@@ -60,6 +60,12 @@ public class RecoverBinarySearchTree {
         ArrayList<Integer> A = new ArrayList<>(Arrays.asList(2, 3, 1));
         BuildIntegerTree treeBuilder = new BuildIntegerTree();
         TreeNode root = treeBuilder.BuildIntegerTree(A);
+
+        ArrayList<Integer> ans = notOptimized(root);
+        System.out.println(ans);
+        // Time O(N);
+        // Space O(Height of Tree);
+
         ArrayList<Integer> res = find(root);
         System.out.println(res);
         // Time O(N);
@@ -69,6 +75,22 @@ public class RecoverBinarySearchTree {
     public static TreeNode first = null;
     public static TreeNode second = null;
     public static TreeNode prev = null;
+
+    public static ArrayList<Integer> notOptimized(TreeNode root){
+        findWithExtraSpace(root);
+        rearrange();
+        return new ArrayList<Integer>(Arrays.asList(first.val, second.val));
+    }
+    public static void findWithExtraSpace(TreeNode root){
+        if(root == null) return;
+        findWithExtraSpace(root.left);
+        if(prev != null && prev.val > root.val){
+            if(first == null) first = prev;
+            second = root;
+        }
+        prev = root;
+        findWithExtraSpace(root.right);
+    }
     public static ArrayList<Integer> find(TreeNode root){
         morrisInorderTraversal(root);
         rearrange();
