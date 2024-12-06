@@ -38,4 +38,37 @@ public class BuildIntegerTree {
         }
         return root;
     }
+
+    public TreeNextNode BuildNextTree(ArrayList<Integer> A) {
+        if (A == null || A.size() == 0) return null;
+
+        // Create the root node
+        TreeNextNode root = new TreeNextNode(A.get(0));
+
+        // Use a queue to keep track of the nodes
+        Queue<TreeNextNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        int i = 1; // Pointer to traverse the array
+
+        // Build the tree level by level
+        while (i < A.size() && !queue.isEmpty()) {
+            TreeNextNode currentNode = queue.poll();
+
+            // Left child
+            if (i < A.size() && A.get(i) != null) {
+                currentNode.left = new TreeNextNode(A.get(i));
+                queue.offer(currentNode.left);
+            }
+            i++;
+
+            // Right child
+            if (i < A.size() && A.get(i) != null) {
+                currentNode.right = new TreeNextNode(A.get(i));
+                queue.offer(currentNode.right);
+            }
+            i++;
+        }
+        return root;
+    }
 }
