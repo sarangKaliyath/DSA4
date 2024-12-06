@@ -11,7 +11,7 @@ Note 2: The LCA of B and C in A is the shared ancestor of B and C that is locate
 
 Problem Constraints
 1 <= Number of nodes in a binary tree <= 10^5
-1 <= B , C <= 105
+1 <= B , C <= 10^5
 
 Input Format:
 First argument is a root node of the binary tree, A.
