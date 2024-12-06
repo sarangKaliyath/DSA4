@@ -1,5 +1,8 @@
 package Trees;
 
+import java.util.*;
+import java.util.Map.Entry;
+
 /*
 Problem Description:
 Given a binary tree, return a 2-D array with vertical order traversal of it. Go through the example and image for more details.
@@ -53,4 +56,50 @@ Explanation 1:
  First row represents vertical line 1 and so on.
  */
 public class VerticalOrderTraversal {
+    public static void main(String[] args) {
+        ArrayList<Integer> A = new ArrayList<>(Arrays.asList(6, 3, 7, 2, 5, null, 9));
+        BuildIntegerTree treeBuilder = new BuildIntegerTree();
+        TreeNode root = treeBuilder.BuildIntegerTree(A);
+        ArrayList<ArrayList<Integer>> res = traverse(root);
+        System.out.println(res);
+        // Time O(N);
+        // Space O(N);
+    }
+
+    public static ArrayList<ArrayList<Integer>> traverse(TreeNode root) {
+        HashMap<Integer, List<Integer>> hm = new HashMap<>();
+        Deque<Entry<TreeNode, Integer>> q = new ArrayDeque<>();
+        q.offer(new AbstractMap.SimpleEntry<>(root, 0));
+        int minLevel = 0;
+        int maxLevel = 0;
+
+        while (!q.isEmpty()) {
+            Entry<TreeNode, Integer> x = q.pollFirst();
+
+            TreeNode node = x.getKey();
+            int level = x.getValue();
+
+            minLevel = Math.min(minLevel, level);
+            maxLevel = Math.max(maxLevel, level);
+
+            hm.putIfAbsent(level, new ArrayList<>());
+            hm.get(level).add(node.val);
+
+
+            if (node.left != null) {
+                q.offerLast(new AbstractMap.SimpleEntry<>(node.left, level - 1));
+            }
+            if (node.right != null) {
+                q.offerLast(new AbstractMap.SimpleEntry<>(node.right, level + 1));
+            }
+        }
+
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+
+        for(int i = minLevel; i <= maxLevel; i++){
+            res.add(new ArrayList<>(hm.get(i)));
+        }
+
+        return res;
+    }
 }
