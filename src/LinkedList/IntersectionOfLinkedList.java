@@ -80,57 +80,47 @@ public class IntersectionOfLinkedList {
             }
         }
 
-        ListNode res = find(A, B);
+        ListNode res = findCommonGrounds(A, B);
         res.printList();
         // Time O(N);
         // Space O(1);
     }
 
-    public static ListNode find(ListNode headA, ListNode headB) {
-        if (headA == null || headB == null) return null;
+    public static ListNode findCommonGrounds(ListNode A, ListNode B) {
+        int lenA = getLength(A);
+        int lenB = getLength(B);
 
-        ListNode copyA = headA;
-        int lenA = 0;
-        while (copyA != null) {
-            copyA = copyA.next;
-            lenA++;
-        }
 
-        ListNode copyB = headB;
-        int lenB = 0;
-        while (copyB != null) {
-            copyB = copyB.next;
-            lenB++;
-        }
+        ListNode longerList = lenA > lenB ? A : B;
+        ListNode shorterList = lenA > lenB ? B : A;
 
-        copyA = headA;
-        copyB = headB;
+
         int diff = Math.abs(lenA - lenB);
-        ListNode diffNode = null;
-        ListNode runner = null;
 
-        if (lenA > lenB) {
-            diffNode = headA;
-            runner = headB;
-            while (diff > 0) {
-                diffNode = diffNode.next;
-                diff--;
-            }
-        } else {
-            diffNode = headB;
-            runner = headA;
-            while (diff > 0) {
-                diffNode = diffNode.next;
-                diff--;
-            }
+        while (diff > 0) {
+            longerList = longerList.next;
+            diff--;
         }
 
-        while (diffNode != runner) {
-            if (diffNode == null || runner == null) return null;
-            runner = runner.next;
-            diffNode = diffNode.next;
+
+        while (longerList != null && shorterList != null) {
+            if (longerList == shorterList) return longerList;
+            longerList = longerList.next;
+            shorterList = shorterList.next;
         }
 
-        return diffNode;
+        return null;
     }
+
+
+    public static int getLength(ListNode head) {
+        int len = 0;
+        ListNode current = head;
+        while (current != null) {
+            current = current.next;
+            len++;
+        }
+        return len;
+    }
+
 }
