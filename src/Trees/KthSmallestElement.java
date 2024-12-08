@@ -44,9 +44,9 @@ Explanation 2: 1st element is 1.
 
  */
 public class KthSmallestElement {
+
     private static int count = 0;
     private static int ans = Integer.MIN_VALUE;
-    private static boolean isFound = false;
 
     public static void main(String[] args) {
         ArrayList<Integer> A = new ArrayList<>(Arrays.asList(3, null, 4));
@@ -55,23 +55,20 @@ public class KthSmallestElement {
         BuildIntegerTree treeBuilder = new BuildIntegerTree();
         TreeNode root = treeBuilder.BuildIntegerTree(A);
         find(root, B);
+        System.out.println(ans);
         // Time O(N);
         // Space O(Height of Tree);
     }
 
     public static void find(TreeNode root, int B) {
         if (root == null) return;
+
         find(root.left, B);
         count++;
 
         if (count == B) {
-            isFound = true;
             ans = root.val;
             return;
-        }
-
-        if (!isFound) {
-            find(root.right, B);
-        }
+        } else find(root.right, B);
     }
 }
