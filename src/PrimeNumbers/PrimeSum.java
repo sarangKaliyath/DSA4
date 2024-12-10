@@ -52,8 +52,8 @@ public class PrimeSum {
 
         for (int i = 2; i <= A / 2; i++) {
             {
-                if (isPrime[i] && isPrime[A - 1]) {
-                    return new ArrayList<>(Arrays.asList(i, A - 1));
+                if (isPrime[i] && isPrime[A - i]) {
+                    return new ArrayList<>(Arrays.asList(i, A - i));
                 }
             }
         }
