@@ -57,6 +57,8 @@ public class MaximumArraySumAfterBNegations {
         int B = 10;
         int res = find(A, B);
         System.out.println(res);
+        // Time O(NlogN);
+        // Space O(N);
     }
 
     public static int find(ArrayList<Integer> A, int B) {
