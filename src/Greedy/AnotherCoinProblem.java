@@ -36,6 +36,8 @@ Explanation 2:
  Representation of 5 coins will be : (1 + 1 + 1 + 1 + 5).
  */
 
+import java.util.ArrayList;
+
 public class AnotherCoinProblem {
 
     public static void main(String[] args) {
@@ -45,12 +47,38 @@ public class AnotherCoinProblem {
         System.out.println(res);
         // Time O(logA * logA);
         // Space O(1);
+
+        int ans = optimized(A);
+        System.out.println(ans);
+        // Time O(logA);
+        // Space O(logA);
+    }
+
+    public static int optimized(int A) {
+        ArrayList<Integer> powers = new ArrayList<>();
+
+        int val = 1;
+        while (val <= A) {
+            powers.add(val);
+            if (val > Integer.MAX_VALUE / 5) break;
+            val *= 5;
+        }
+
+        int count = 0;
+
+        for (int i = powers.size() - 1; i >= 0 && A > 0; i--) {
+            int availableCoin = powers.get(i);
+            count += A / availableCoin;
+            A %= availableCoin;
+        }
+
+        return count;
     }
 
     public static int find(int A) {
-        if(A % 5 == 0) return  1;
+        if (A % 5 == 0) return 1;
         int count = 0;
-        while(A > 0){
+        while (A > 0) {
             int availableDenomination = findNearestPower(A);
             A -= availableDenomination;
             count++;
@@ -58,10 +86,11 @@ public class AnotherCoinProblem {
         return count;
     }
 
-    public  static  int findNearestPower(int A){
-        int ans = 0; int prev = 0;
+    public static int findNearestPower(int A) {
+        int ans = 0;
+        int prev = 0;
         int pow = 0;
-        while(ans <= A){
+        while (ans <= A) {
             prev = ans;
             ans = (int) Math.pow(5, pow);
             pow++;
