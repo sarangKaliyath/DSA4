@@ -65,7 +65,7 @@ public class AthLargestElement {
         ArrayList<Integer> res = find(B, A);
         System.out.println(res);
         // Time O(NlogN);
-        // Space O(N);
+        // Space O(K);
     }
 
     public static ArrayList<Integer> find(ArrayList<Integer> B, int A){
