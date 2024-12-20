@@ -73,9 +73,13 @@ public class FlipKartsChallengeInEffectiveInventoryManagement {
 
         int res = bruteForce(A, B, A.size());
         System.out.println(res);
+        // Time O(N^2);
+        // Space O(N);
 
         int ans = optimized(A, B, A.size());
         System.out.println(ans);
+        // Time O(NlogN) + O(NlogK) ... sorting and heap;
+        // Space O(N) + O(K) .. for storing items and heap space;
     }
 
     public static class Items {
