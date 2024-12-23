@@ -46,6 +46,8 @@ public class ShaggyAndDistances {
         ArrayList<Integer> A = new ArrayList<>(Arrays.asList(7, 1, 3, 4, 1, 7));
         int res = find(A, A.size());
         System.out.println(res);
+        // Time O(N);
+        // Space O(N);
     }
 
     public static int find(ArrayList<Integer> A, int n) {
