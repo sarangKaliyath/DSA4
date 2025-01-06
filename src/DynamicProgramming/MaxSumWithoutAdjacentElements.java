@@ -48,7 +48,7 @@ Explanation 2:
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MaxSumNoAdjacent {
+public class MaxSumWithoutAdjacentElements {
     public static void main(String[] args) {
         ArrayList<ArrayList<Integer>> A = new ArrayList<>(Arrays.asList(
                 new ArrayList<>(Arrays.asList(1, 2, 3, 4)),
