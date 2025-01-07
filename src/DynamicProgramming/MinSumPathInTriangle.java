@@ -54,8 +54,8 @@ public class MinSumPathInTriangle {
 
         int res = bruteForce(A, 0, 0);
         System.out.println(res);
-        // Time O(2 ^ N + M);
-        // Space O(N + M);
+        // Time O(2 ^ N);
+        // Space O(N);
 
         int n = A.size();
         int m = A.get(n - 1).size();
@@ -63,8 +63,13 @@ public class MinSumPathInTriangle {
         for (int[] row : dp) Arrays.fill(row, -1);
         int ans = recursive(A, 0, 0, dp);
         System.out.println(ans);
-        // Time O(N * M);
-        // Space O(N * M);
+        // Time O(N^2);
+        // Space O(N^2);
+
+        int val = iterative(A, A.size());
+        System.out.println(val);
+        // Time O(N^2);
+        // Space O(N);
     }
 
     public static int bruteForce(ArrayList<ArrayList<Integer>> A, int i, int j) {
