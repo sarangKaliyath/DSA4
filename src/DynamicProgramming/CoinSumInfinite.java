@@ -68,7 +68,7 @@ public class CoinSumInfinite {
         // Time O(N * B);
         // Space O(N * B);
 
-        int val = find(A, B);
+        int val = iterative(A, B);
         System.out.println(val);
         // Time O(N * B);
         // Space O(B);
@@ -104,7 +104,7 @@ public class CoinSumInfinite {
         return dp[i][capacity];
     }
 
-    public static int find(ArrayList<Integer> A, int B) {
+    public static int iterative(ArrayList<Integer> A, int B) {
         int[] dp = new int[B + 1];
         dp[0] = 1;
 
