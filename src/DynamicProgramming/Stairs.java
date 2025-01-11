@@ -52,6 +52,16 @@ public class Stairs {
         System.out.println(ans);
         // Time O(A);
         // Space O(A);
+
+        int out = dpIterative(A);
+        System.out.println(out);
+        // Time O(A);
+        // Space O(A);
+
+        int val = dpIterativeOptimized(A);
+        System.out.println(val);
+        // Time O(A);
+        // Space O(1);
     }
 
     public static int bruteForce(int A) {
@@ -65,5 +75,37 @@ public class Stairs {
         if (dp[A] != -1) return dp[A];
         dp[A] = (dpRecursive(A - 1) + dpRecursive(A - 2)) % MOD;
         return dp[A];
+    }
+
+    public static int dpIterative(int A) {
+        if (A == 1) return 1;
+        if (A == 2) return 2;
+
+        int[] dp = new int[A + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+
+        for (int i = 3; i <= A; i++) {
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007;
+        }
+
+        return dp[A];
+    }
+
+    public static int dpIterativeOptimized(int A) {
+        if (A == 1) return 1;
+        if (A == 2) return 2;
+
+        int x = 1;
+        int y = 2;
+        int ans = 0;
+
+        for (int i = 3; i <= A; i++) {
+            ans = (x + y) % 1000000007;
+            x = y;
+            y = ans;
+        }
+
+        return ans;
     }
 }
