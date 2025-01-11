@@ -42,6 +42,11 @@ public class MaxProductSubArray {
     public static void main(String[] args) {
         ArrayList<Integer> A = new ArrayList<>(Arrays.asList(4, 2, -5, 1));
 
+        int val = bruteForce(A, A.size());
+        System.out.println(val);
+        // Time O(N^2);
+        // Space O(1);
+
         int res = find(A, A.size());
         System.out.println(res);
         // Time O(N);
@@ -51,6 +56,20 @@ public class MaxProductSubArray {
         System.out.println(ans);
         // Time O(N);
         // Space O(1);
+    }
+
+    public static int bruteForce(ArrayList<Integer> A, int n){
+        int maxProduct = A.get(0);
+
+        for(int i = 0; i < n; i++){
+            int prod = 1;
+            for(int j = i; j < n; j++){
+                prod *= A.get(j);
+                maxProduct = Math.max(maxProduct, prod);
+            }
+        }
+
+        return maxProduct;
     }
 
     public static int find(ArrayList<Integer> A, int n) {
