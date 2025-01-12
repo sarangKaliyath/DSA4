@@ -1,5 +1,8 @@
 package DynamicProgramming;
 
+import javax.swing.plaf.synth.SynthUI;
+import java.util.Arrays;
+
 /*
 Problem Description
 Find out the number of A digit positive numbers,
@@ -52,6 +55,11 @@ public class NDigitNumbers {
         // Time O(A * 10^A);
         // Space O(1);
 
+        int out = recursive(A, B);
+        System.out.println(out);
+        // Time O(A * B);
+        // Space O(A * B);
+
         int res = iterative(A, B);
         System.out.println(res);
         // Time O(A*B);
@@ -81,6 +89,45 @@ public class NDigitNumbers {
             digits /= 10;
         }
         return sum;
+    }
+
+    private static int MOD = 1000000007;
+
+    public static int recursive(int A, int B) {
+        int[][] dp = new int[A + 1][B + 1];
+
+        for (int[] row : dp) Arrays.fill(row, -1);
+
+        int res = 0;
+
+        for (int digits = 1; digits <= 9; digits++) {
+            if (B - digits >= 0) {
+                res = (res + countNDigitNumbers(A - 1, B - digits, dp)) % MOD;
+            }
+        }
+
+        return res;
+    }
+
+    public static int countNDigitNumbers(int digitsLeft, int sumLeft, int[][] dp) {
+
+        if (sumLeft < 0) return 0;
+        if (digitsLeft == 0 && sumLeft == 0) return 1;
+        if (digitsLeft == 0) return 0;
+
+        if (dp[digitsLeft][sumLeft] != -1) {
+            return dp[digitsLeft][sumLeft];
+        }
+
+        int res = 0;
+
+        for (int digit = 0; digit <= 9; digit++) {
+            res = (res + countNDigitNumbers(digitsLeft - 1, sumLeft - digit, dp)) % MOD;
+        }
+
+        dp[digitsLeft][sumLeft] = res;
+
+        return dp[digitsLeft][sumLeft];
     }
 
     public static int iterative(int A, int B) {
