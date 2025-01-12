@@ -44,13 +44,43 @@ Explanation 2:
 public class NDigitNumbers {
 
     public static void main(String[] args) {
-        int A = 2;
+        int A = 4;
         int B = 4;
+
+        int ans = bruteForce(A, B);
+        System.out.println(ans);
+        // Time O(A * 10^A);
+        // Space O(1);
 
         int res = iterative(A, B);
         System.out.println(res);
         // Time O(A*B);
         // Space O(A*B);
+    }
+
+
+    public static int bruteForce(int digits, int sum) {
+        int MOD = 1000000007;
+        int start = (int) Math.pow(10, digits - 1);
+        int end = (int) Math.pow(10, digits);
+        long count = 0;
+
+        for (int i = start; i < end; i++) {
+            if (digitSum(i) == sum) {
+                count = (count + 1) % MOD;
+            }
+        }
+
+        return (int) count;
+    }
+
+    public static long digitSum(int digits) {
+        long sum = 0;
+        while (digits > 0) {
+            sum += digits % 10;
+            digits /= 10;
+        }
+        return sum;
     }
 
     public static int iterative(int A, int B) {
