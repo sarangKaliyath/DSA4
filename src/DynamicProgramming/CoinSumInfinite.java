@@ -6,7 +6,7 @@ You are given a set of coins A.
 In how many ways can you make sum B assuming you have infinite amount of each coin in the set.
 NOTE:
 Coins in set A will be unique. Expected space complexity of this problem is O(B).
-The answer can overflow. So, return the answer % (106 + 7).
+The answer can overflow. So, return the answer % (10^6 + 7).
 
 Problem Constraints
 1 <= A <= 500
