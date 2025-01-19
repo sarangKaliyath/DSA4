@@ -16,7 +16,7 @@ The cost of repairing a road between (i, j) and (i + 1, j) is A[i].
 The cost of repairing a road between (i, j) and (i, j + 1) is B[j].
 Return the minimum cost of repairing the roads such that
 all cities can be visited from city indexed (0, 0).
-As the cost can be large, return the cost modulo 109^+7.
+As the cost can be large, return the cost modulo 10^9+7.
 
 Problem Constraints
 1 <= N, M <= 10^5
