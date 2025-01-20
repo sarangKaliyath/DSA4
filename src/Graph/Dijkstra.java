@@ -129,27 +129,27 @@ public class Dijkstra {
         PriorityQueue<Edges> minHeap = new PriorityQueue<>((a, b) -> Integer.compare(a.weight, b.weight));
         minHeap.offer(new Edges(source, 0));
 
-        while(!minHeap.isEmpty()){
+        while (!minHeap.isEmpty()) {
             Edges edge = minHeap.poll();
             int node = edge.node;
             int weight = edge.weight;
 
-            if(res.get(node) < weight){
+            if (res.get(node) < weight) {
                 continue;
             }
 
             res.set(node, weight);
 
-            for(Edges neighbouringEdge : graph.get(node)){
+            for (Edges neighbouringEdge : graph.get(node)) {
                 int totalDistance = neighbouringEdge.weight + weight;
-                if(totalDistance < res.get(neighbouringEdge.node)){
+                if (totalDistance < res.get(neighbouringEdge.node)) {
                     minHeap.offer(new Edges(neighbouringEdge.node, totalDistance));
                 }
             }
         }
 
-        for(int i = 0; i < n; i++){
-            if(res.get(i) == Integer.MAX_VALUE){
+        for (int i = 0; i < n; i++) {
+            if (res.get(i) == Integer.MAX_VALUE) {
                 res.set(i, -1);
             }
         }
