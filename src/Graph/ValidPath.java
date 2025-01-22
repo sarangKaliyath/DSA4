@@ -70,6 +70,8 @@ public class ValidPath {
 
         String res = isPossible(A, B, C, D, E, F);
         System.out.println(res);
+        // Time O(A * B * C);
+        // Space O(A * B);
     }
 
     public static String isPossible(int A, int B, int C, int D, ArrayList<Integer> E, ArrayList<Integer> F) {
