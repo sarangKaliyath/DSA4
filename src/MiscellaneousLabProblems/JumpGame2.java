@@ -55,6 +55,8 @@ public class JumpGame2 {
         ArrayList<Integer> A = new ArrayList<>(Arrays.asList(2, 3, 1, 1, 4));
         int res = getMinJumps(A);
         System.out.println(res);
+        // Time O(N);
+        // Space O(1);
     }
 
     public static int getMinJumps(ArrayList<Integer> A) {
