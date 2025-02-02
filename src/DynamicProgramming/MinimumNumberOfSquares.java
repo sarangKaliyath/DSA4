@@ -38,8 +38,6 @@ public class MinimumNumberOfSquares {
     public static int dpAns;
     public static int[] dp;
 
-    public static int[] dpArr;
-
     public static void main(String[] args) {
         int A = 5;
 
@@ -55,8 +53,6 @@ public class MinimumNumberOfSquares {
         // Time O(N * √N);
         // Space O(N);
 
-        dpArr = new int[A + 1];
-        Arrays.fill(dpArr, Integer.MAX_VALUE);
         int bottomUpRes = iterativeDp(A);
         System.out.println(bottomUpRes);
         // Time O(N * √N);
@@ -89,13 +85,15 @@ public class MinimumNumberOfSquares {
     }
 
     public static int iterativeDp(int A) {
-        dpArr[0] = 0;
+        int[] dp = new int[A + 1];
+
         for (int i = 1; i <= A; i++) {
             dp[i] = i;
             for (int j = 1; j * j <= i; j++) {
-                dpArr[i] = Math.min(dpArr[i], 1 + dpArr[i - (j * j)]);
+                dp[i] = Math.min(dp[i], 1 + dp[i - (j * j)]);
             }
         }
-        return dpArr[A];
+
+        return dp[A];
     }
 }
