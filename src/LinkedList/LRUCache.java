@@ -68,8 +68,11 @@ public class LRUCache {
     public void delete (DoublyListNode head){
         DoublyListNode prev = head.prev;
         DoublyListNode next = head.next;
+        
         prev.next = next;
         next.prev = prev;
+
+        // Severing head from list for garbage collection;
         head.next = null;
         head.prev = null;
     }
