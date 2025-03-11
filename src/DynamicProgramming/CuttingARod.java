@@ -51,6 +51,11 @@ public class CuttingARod {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, -1);
 
+        int reEasAns = recursiveEasier(A, 0, 1, A.size(), dp);
+        System.out.println(reEasAns);
+        // Time O(N^2);
+        // Space O(N);
+
         int ans = recursive(A, n, dp);
         System.out.println(ans);
         // Time O(N^2);
@@ -75,6 +80,20 @@ public class CuttingARod {
         }
 
         return maxProfit;
+    }
+
+    public static int recursiveEasier(ArrayList<Integer> A, int i, int crrLen, int avlLen, int [] dp){
+        if(avlLen <= 0 || i >= A.size()) return 0;
+        if(dp[avlLen] != -1) return dp[avlLen];
+
+        int choose = 0;
+        if(avlLen >= crrLen){
+            choose = recursiveEasier(A, i, crrLen, avlLen - crrLen, dp) + A.get(i);
+        }
+
+        int skip = recursiveEasier(A, i + 1, crrLen + 1, avlLen, dp);
+
+        return dp[avlLen] = Math.max(choose, skip);
     }
 
     public static int recursive(ArrayList<Integer> A, int i, int[] dp) {
